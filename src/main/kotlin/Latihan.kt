@@ -1,9 +1,6 @@
 fun main(){
-    val lamaParkir: Int
-    val lamaParkir1: Int
-    val biayaParkir: Double
-    val biayaParkirTemp1: Double
-    val biayaParkirTemp2: Double
+    var lamaParkir: Int
+    var biayaParkir: Float
 
     //rule biaya parkir
 
@@ -13,14 +10,12 @@ fun main(){
 
     lamaParkir = 8
     if(lamaParkir<=5){
-        biayaParkirTemp1 = tarifDasar*lamaParkir
-    }else{
-        biayaParkirTemp2 = tarifDasar*5
-        lamaParkir1 = lamaParkir-5
-        biayaParkirTemp1 = biayaParkirTemp2 + (tarifBerikutnya*lamaParkir1)
+        biayaParkir = (tarifDasar*lamaParkir).toFloat()
+    } else if (lamaParkir>5 && lamaParkir<24) {
+        biayaParkir = 5 + (tarifBerikutnya * (lamaParkir - 5)).toFloat()
+    } else{
+        biayaParkir = 15 + ((lamaParkir-24)*tarifBerikutnya).toFloat()
     }
-
-    biayaParkir = biayaParkirTemp1
 
     println("Lama Parkir: $lamaParkir")
     println("Biaya Parkir: $biayaParkir")
